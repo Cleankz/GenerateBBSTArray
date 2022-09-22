@@ -3,19 +3,18 @@ def GenerateBBSTArray(a):
         return []
     a = sorted(a)
     arr_res = [None] * len(a)
-    return Bst(arr_res,  _createBalancedTree(a, 0, len(a) - 1))
+    arr_res2 = []
+    return Bst(arr_res,  createBalancedTree(arr_res2, a, 0, len(a) - 1))
 
-arr_res2 = []
-def _createBalancedTree(arr, start, end):
+def createBalancedTree(arr_res2,arr, start, end):
     if end < start:
         return None
     mid = (start + end) // 2
     node = arr[mid]
     arr_res2.append(node)
-    node_left = _createBalancedTree(arr, start, mid - 1)
-    node_right = _createBalancedTree(arr, mid + 1, end)
+    node_left = createBalancedTree(arr_res2,arr, start, mid - 1)
+    node_right = createBalancedTree(arr_res2,arr, mid + 1, end)
     return arr_res2
-
 
 def Bst(arr_res, arr_res2):
     arr_res[0] = arr_res2[0]
